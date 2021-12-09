@@ -13,6 +13,8 @@ const quantityIngradientsInWarehouse = require("../warehouse/quantityIngradients
 const addReadyMeals = require("../admin/buyReadyMeals")
 const readyMeals = require("../warehouse/readyMeals")
 const operationWithLogs = require("../restaurantLogs/operationWithLogs")
+const auditAction = require('../restaurantLogs/audit');
+const fs = require("fs");
 
 // Функція, яки виводить базову інформацію для користувача.
 module.exports.StartInfoForUser = function StartInfoForUser() {
@@ -51,12 +53,12 @@ module.exports.StartInfoForUser = function StartInfoForUser() {
     }
 
     // Функція, яка перевіряє, чи всі вхідні дані задовілняють умови програми, щоб продовжити виконання.
-    exports.start()
+    const result = exports.start()
 
     console.log("-------------------------------------------------------------")
 
     // Повертаємо значення користувача для тестування.
-    return [user.getName(), user.getBudget(), user.getFood(), user.getAllergy(), user.getFullPayment(), user.getHaveAllergy(), user.getBudgetAfterPay()]
+    return [user.getName(), user.getBudget(), user.getFood(), user.getAllergy(), user.getFullPayment(), user.getHaveAllergy(), user.getBudgetAfterPay(), result]
 }
 
 // Функція, яка повертає ціну разом з %.
@@ -154,7 +156,7 @@ module.exports.start = function start() {
 
         // Вітання, якщо умови підходять.
         console.log("You can buy food in our Restaurant !")
-
+        return true
     } else {
 
         // Важливо !
@@ -176,7 +178,7 @@ module.exports.start = function start() {
         operationWithLogs.writeLogs()
 
         // Інформація про вихід з програми.
-        systemCommands.EXIT("У користувача є алергія, або немає коштів на замовлення.")
+        // systemCommands.EXIT("У користувача є алергія, або немає коштів на замовлення.")
 
         return false
     }

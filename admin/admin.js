@@ -8,8 +8,11 @@ const quantityReadyMealsInWarehouse = require("../warehouse/quantityReadyMealsIn
 const operationWithTotalQuantity = require("../warehouse/operationWithTotalQuantityOfAllInWarehouse")
 const operationWithLogs = require("../restaurantLogs/operationWithLogs")
 const operationWithWaste = require("../warehouse/operationWithWaste")
+const fs = require("fs");
+const audit = require("../restaurantLogs/audit");
+const trashService = require("../services/trashService");
 
-admin()
+// admin()
 
 // Головне функція для адміністратора.
 function admin() {
@@ -71,7 +74,7 @@ function addIngradientsAndReadyMeals(array) {
 function addReadyMeals(food, quantity) {
 
     // Функція, яка додає страви на склад.
-    buyReadyMeals.addReadyMeals(food, quantity)
+    const result = buyReadyMeals.addReadyMeals(food, quantity)
 
     // Додаємо в логи інформацію, які саме страви були закуплені.
     operationWithLogs.addLogs("Куплені страви:" + food)
@@ -79,8 +82,28 @@ function addReadyMeals(food, quantity) {
     operationWithLogs.addLogs("Кількість страв:" + quantity)
     operationWithLogs.writeLogs()
 
+
     // Функція, яка віднімає ціну за страви з бюджету.
     buyReadyMeals.removeMoney(food, quantity)
+
+    const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+    const readyMeal = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
+    const warehouseIngredient = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
+    const trash = trashService.getTrash();
+    const trashCopy = {...trash}
+    const warehouses = {
+        ...readyMeal,
+        ...warehouseIngredient
+    };
+    const auditRecord = {
+        message: result[1],
+        warehouses,
+        restaurantBudget,
+        trash: trashCopy
+    }
+
+    audit.addToAudit(auditRecord);
+
 }
 
 // Функція додавання коштів в бюджет.
@@ -116,6 +139,7 @@ function buyNewIngradients(ingradients, quantity) {
 
     // Додаємо в логи інформацію, які саме інградієнти були закуплені.
     operationWithLogs.addLogs("Куплені інградієнти:" + ingradients)
+
     // Додаємо в логи інформацію, скільки інградієнтів було закуплено.
     operationWithLogs.addLogs("Кількість інградієнтів:" + quantity)
     operationWithLogs.writeLogs()
@@ -138,3 +162,5 @@ function removeFromBudget(ingradients, quantity) {
     // Отримані масиви з інградієнтами і їх кількістю передаємо у функцію, яка буде обраховувати їх загальну вартість.
     buyIngradients.removeMoney(ingradients, quantity)
 }
+
+module.exports = { buyNewIngradients, addReadyMeals, addIngradientsAndReadyMeals }

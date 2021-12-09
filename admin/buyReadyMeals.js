@@ -1,5 +1,6 @@
 const fs = require("fs");
 const notBaseIngradients = require("../menu/notBaseIngradients")
+const menu = require('../menu/notBaseIngradients.json');
 const operationWithWarehouse = require("../warehouse/operationWithWarehouse")
 const quantityInWarehouse = require("../warehouse/quantityReadyMealsInWarehouse");
 const readyMeals = require("../warehouse/readyMeals")
@@ -9,15 +10,21 @@ const operationWithBudget = require("../budget/operationWithBudget")
 const systemCommands = require("../systemCommands/systemCommands");
 const restaurantBudget = require("../budget/restaurantBudget")
 const operationWithTaxes = require("../taxes/operationWithTax");
+const audit = require('../restaurantLogs/audit');
+const trashService = require('../services/trashService');
+const wasteLimit = require('../resources/configuration.json');
+
 
 // Потрібно зробити покупку готових страв, максимум 3. Доробити пункт 6.7.4
 module.exports.addReadyMeals = function addReadyMeals(food, quantity) {
-
+    let message;
     // Перебираємо всі інградієнти і їх кількість, щоб записати локально на наш склад.
     for (var i = 0; i < food.length; i++) {
 
         // Якщо такий інградієнт є у нас на складі, то добавляємо його
         if (notBaseIngradients.notBaseIngradients.hasOwnProperty(food[i])) {
+
+            const trash = trashService.trash;
 
             // Перевіряємо, чи є місце на складі. Чи не перевищений ліміт.
             var result = quantityInWarehouse.checkQuantityOfReadyMeals(food[i], quantity[i])
@@ -28,6 +35,22 @@ module.exports.addReadyMeals = function addReadyMeals(food, quantity) {
 
                 // Процес додоавання інградієнтів на склад.
                 readyMeals.readyMeals[food[i]] += parseInt(quantity2)
+                message = `Order =>  Success: ${food} ${result}; Wasted: ${food} ${quantity[i] - result}`;
+
+                if (quantity[i] - result > 0) {
+                    const baseIngredients = menu[`${food}`]; //need fix
+                    baseIngredients.forEach(ingredient => {
+                        trashService.trashService(wasteLimit['waste limit'], trash, (quantity[i] - result), ingredient);
+                    });
+                }
+
+            } else {
+                message = `Order ${food} ${quantity[i]} => Wasted ${food} ${quantity[i]}`;
+
+                const baseIngredients = menu[`${food}`]; //need to fix
+                baseIngredients.forEach(ingredient => {
+                    trashService.trashService(wasteLimit['waste limit'], trash, (quantity[i] - result), ingredient);
+                });
             }
 
         } else {
@@ -39,10 +62,10 @@ module.exports.addReadyMeals = function addReadyMeals(food, quantity) {
     }
 
     // Після завершення локального добавлення всіх інградієнтів на склад, передаємо наступній функції локальне значення складу.
-    operationWithWarehouse.addReadyMeals(readyMeals.readyMeals)
+    operationWithWarehouse.addReadyMeals(readyMeals.readyMeals);
 
     // Повертаємо кількість готових страв для тестування.
-    return readyMeals.readyMeals
+    return [readyMeals.readyMeals, message];
 }
 
 // Функція, яка віднімає з бюджета кошти за інградієнти, які входять у страву.

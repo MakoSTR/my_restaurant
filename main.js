@@ -13,6 +13,14 @@ const operationWithDailyTax = require("./taxes/operationWithDailyTax");
 const fs = require("fs");
 const systemCommands = require("./systemCommands/systemCommands")
 const admin = require("./admin/admin")
+const customersBudget = require('./resources/customersBudget.json');
+const customersAllergies = require('./resources/customersAllergies.json');
+const auditAction = require("./restaurantLogs/audit");
+const trashService = require("./services/trashService");
+
+const menu = require('./menu/notBaseIngradients.json');
+const wasteLimit = require('./resources/configuration.json');
+
 
 /*
 ------------------------------------------------------------------------------------------------
@@ -79,11 +87,61 @@ function main(name, budget, food, allergy) {
     // Якщо все проходить перевірку, то винонання програми продовжується, а якщо ні - виконання зупиняється.
     // var result3 = userInfo.StartInfoForUser()
     // if (result3 == false) return
-    userInfo.StartInfoForUser()
+    const resultAboutAllergy = userInfo.StartInfoForUser()
+    if (!resultAboutAllergy[7]) {
+        const trash = trashService.getTrash();
+        const ingredient = menu[food]
+        trashService.trashService(wasteLimit['waste limit'], trash, 1, ingredient)
+
+        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
+        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
+        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+        const getTrash = trashService.getTrash();
+
+        const trashCopy = { ...getTrash}
+        const warehouses = {
+            ...readyMeals,
+            ...warehouseIngradients
+        };
+
+        const message = {
+            message: ` => can’t order, allergic to: ${allergy}`,
+            warehouses,
+            restaurantBudget,
+            trash: trashCopy
+        }
+        auditAction.addToAudit(message);
+
+
+
+        return false
+    }
 
     // Функція, яка забирає зі складі всі інградієнти, які входять у страву.
-    operationWithWarehouse.Calculate()
+    const result = operationWithWarehouse.Calculate()
+    if (!result[2]) {
 
+        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
+        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
+        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+        const trash = trashService.getTrash();
+        const trashCopy = { ...trash}
+
+        const warehouses = {
+            ...readyMeals,
+            ...warehouseIngradients
+        };
+
+        const message = {
+            message: ` => Немає потрібної кількості інградієнтів.??`,
+            warehouses,
+            restaurantBudget,
+            trash: trashCopy
+        }
+        auditAction.addToAudit(message);
+
+        return false
+    }
     // Функція, яка забирає з бюджету ціну страви і додає ціну разом з націнкою.
     operationWithBudget.Calculate()
 
@@ -123,13 +181,15 @@ function Properties() {
 
 // Функція, яка перевіряє, скільки замовляє користувачів.
 function quantityOfPeople(name, food) {
-    const budget = 1000;
-    const allergy = '-';
+
     // Якщо більше 1 користувач.
     if (name.length == 1) {
+        const budget = customersBudget[name];
+        const allergy = customersAllergies[name];
         main(name, budget, food, allergy)
     } else {
-
+        const budget = name.map(e => customersBudget[e]);
+        const allergy = name.map(e => customersAllergies[e]);
         if (accessRights.getTableCommand() == false) return
 
         // Якщо більше 1го користувача.
@@ -145,7 +205,6 @@ function quantityOfPeople(name, food) {
 
         // Перебираємо всі інградієнти, які входять у страву N-го користувача.
         for (var i = 0; i < name.length; i++) {
-
             // Отримані інградієнти записуємо у масив ingradientsForAllFood[].
             // Важливо ! Інградієнти записуються у вигляді масиву.
             ingradientsForAllFood.push(getIngradients.ingradients(food[i]))
@@ -172,7 +231,7 @@ function quantityOfPeople(name, food) {
         }
 
         // Перебираємо алергії користувачів. Чи входять вони у масив з інградієнтами, які в свою чергу входять у масив інградієнтів страв, які вони замовили.
-        for (var i = 0; i < allergy.length; i++) {
+        for (var i = 0; i < name.length; i++) {
 
             // Перевірка на алергію. Результат записуємо у змінну result [].
             var result = checkUserData.allergyCheck(allergy[i], _ingradientsForAllFood)
@@ -200,9 +259,7 @@ function quantityOfPeople(name, food) {
         } else {
             console.log("EXIT: main.js/48")
         }
-    }
-
-    // operationWithDailyTax.closeRestaurant()
+    }    // operationWithDailyTax.closeRestaurant()
 }
 
 module.exports = quantityOfPeople;

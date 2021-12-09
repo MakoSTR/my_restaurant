@@ -50,7 +50,6 @@ module.exports.addIngradients = function addIngradients(ingradients, quantity) {
 
 // Функція, яка отримує масиви з інградієнтами і їх кількістю, щоб у подальшому стягнути їх загальну вартість з бюджета.
 module.exports.removeMoney = function removeMoney(ingradients, quantity) {
-
     // Пустий масив, в який ми будемо записувати всі інградієнти за які потрібно заплатити.
     // Важливо ! Ми добавляємо у масив всі інградієнти, за які потрібно заплатити.
     // Тобто, при вхідних даних ["Chicken"] і [2] в результаті буде ["Chicken","Chicken"].
@@ -79,14 +78,13 @@ module.exports.removeMoney = function removeMoney(ingradients, quantity) {
         }
     }
 
-
     // Масив зі всіма інградієнтами передаємо функції price() (-> getPrice.js), яка обраховує загальну їх вартість.
     var money = getPrice.price(ingradientsArray)
 
     var result = operationWithTaxes.addTaxes(money)
 
     // Передаємо змінну money з ціною у функцію _removeFromBudget(), яку потрібно зняти з бюджета.
-    operationWithBudget._removeFromBudget(result)
+    operationWithBudget.removeFromBudget(parseFloat(restaurantBudget.budget) - parseFloat(result))
 
     return restaurantBudget.budget
 }

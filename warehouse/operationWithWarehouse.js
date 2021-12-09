@@ -17,6 +17,7 @@ const operationWithChanceToSpoil = require("./operationWithChanceToSpoil")
 const operationWithWaste = require("./operationWithWaste")
 const maxPriceForAFood = require("./maxPriceForAFood")
 const restaurantBudget = require("../budget/restaurantBudget")
+const auditAction = require('../restaurantLogs/audit');
 
 // Функція, яка викликається, щоб забрати інградієнти зі складу, які входять у страву, яку замовив користувач.
 module.exports.Calculate = function Calculate() {
@@ -32,7 +33,7 @@ module.exports.Calculate = function Calculate() {
         operationWithLogs.writeLogs()
 
         // Повертаємо страву, яку замовив користувач і її кількість на складі готових страх.
-        return [user.getFood(), readyMeals.readyMeals[user.getFood()]]
+        return [user.getFood(), readyMeals.readyMeals[user.getFood()], true]
     } else {
 
         // Записуємо в логи інфомарцію про те, що ми беремо інградієнти зі складу.
@@ -40,7 +41,7 @@ module.exports.Calculate = function Calculate() {
         operationWithLogs.writeLogs()
 
         // Передаємо виконання функції, яка беспосередньо забирає інградієнти і готові страви зі складу.
-        exports.removeIngradientsFromWarehouse()
+        const result = exports.removeIngradientsFromWarehouse()
 
         // Отримуємо алергію користувача.
         var result2 = user.getHaveAllergy()
@@ -49,7 +50,7 @@ module.exports.Calculate = function Calculate() {
         exports.addFood(result2)
 
         // Повертаємо страву, яку замовив користувач та інградієнти на складі.
-        return [readyMeals.readyMeals, warehouseIngradients.warehouseIngradients]
+        return [readyMeals.readyMeals, warehouseIngradients.warehouseIngradients, result[2]];
     }
 }
 
@@ -105,7 +106,7 @@ module.exports.checkIngradients = function checkIngradients(ingradient) {
         operationWithLogs.writeLogs()
 
         // Якщо на складі немає потрібної кількості інградієнтів, то виходимо з програми.
-        systemCommands.EXIT("Немає потрібної кількості інградієнтів.")
+        // systemCommands.EXIT("Немає потрібної кількості інградієнтів.")
 
         // Повертаємо false, щоб протестува даний етап програми.
         return false
@@ -159,10 +160,9 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
     // 1ий масив містить всі інградієнти, які входять у склад страви.
     // 2ий масив містить всі готові страви, які входять у склад страви.
     var result = getIngradients.getReadyMeals(user.getFood())
-
+    let ingredientAmount;
     // Якщо 1ий масив більший за 0, тобто, не пустий, то виконуємо наступні команди.
     if (result[0].length > 0) {
-
         // Перебираємо кожен елемент за 1го масива.
         for (var i = 0; i < result[0].length; i++) {
 
@@ -172,7 +172,7 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                 // Віднімаємо значення вибраного інградієнта на 1.
                 warehouseIngradients.warehouseIngradients[result[0][i]] = warehouseIngradients.warehouseIngradients[result[0][i]] - 1
                 // Перевіряємо, чи є інградієнт на складі для подальшого виконання замовлення.
-                exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
+                ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
                 // Перевіряємо інградієнт на псування.
                 var result4 = operationWithChanceToSpoil.chackChanceToSpoil()
                 // Якщо він зіпсований, то виконуємо наступні комаанди.
@@ -184,7 +184,7 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                     operationWithWaste.addToWaste([result[0][i], result4])
                 }
                 // Перевіряємо, чи є інградієнт на складі для подальшого виконання замовлення.
-                exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
+                ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
             }
         }
     }
@@ -220,7 +220,7 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                                 // Віднімаємо 1 інградієнт зі складу.
                                 warehouseIngradients.warehouseIngradients[result2[k]] = warehouseIngradients.warehouseIngradients[result2[k]] - 1
                                 // Перевіряємо, чи є інградієнт у наявності для подальшого виконання замовлення.
-                                exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
+                                ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
                                 // Перевіряємо шанс псування страви.
                                 var result3 = operationWithChanceToSpoil.chackChanceToSpoil()
                                 // Якщо шанс зіпсованих страв більше за 1, то виконуємо наступні команди.
@@ -232,7 +232,7 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                                     operationWithWaste.addToWaste([result2[k], result3])
                                 }
                                 // Перевіряємо, чи є інградієнт у наявності для подальшого виконання замовлення.
-                                exports.checkIngradients(warehouseIngradients.warehouseIngradients[result2[k]])
+                                ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result2[k]])
                             }
                         }
                     }
@@ -247,7 +247,7 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
     exports.writeFile_removeIngradientsFromWarehouse()
 
     // Повертаємо значення складу інградієнтів і готових страв для тестування.
-    return [warehouseIngradients.warehouseIngradients, readyMeals.readyMeals]
+    return [warehouseIngradients.warehouseIngradients, readyMeals.readyMeals, ingredientAmount]
 }
 
 // Функція, яка записує нове значення інградієнтів складу у файл.

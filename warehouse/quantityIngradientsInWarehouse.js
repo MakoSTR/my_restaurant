@@ -4,6 +4,8 @@ const fs = require("fs");
 const operationWithTotalQuantityOfAllInWarehouse = require("./operationWithTotalQuantityOfAllInWarehouse");
 const quantityReadyMealsInWarehouse = require("./quantityReadyMealsInWarehouse")
 const systemCommands = require("../systemCommands/systemCommands");
+const audit = require('../restaurantLogs/audit');
+const trashService = require('../services/trashService');
 
 // Функція, яка перевіряє максимальну допустиму кількість інградієнтів на складі. Тобто, кожен інградієнт окремо.
 module.exports.checkQuantityOfIngradients = function checkQuantityOfIngradients(ingradient, quantity) {
@@ -46,6 +48,25 @@ module.exports.checkQuantityOfIngradients = function checkQuantityOfIngradients(
 
             // Показуємо, скільки зайвих інградієнтів було замовлено.
             console.log("Кількість замовлення перевищена: " + ingradient + " - " + result) // 1
+
+
+
+            const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+            const readyMeal = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
+            const warehouseIngredient = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
+            const warehouses = {
+                ...readyMeal,
+                ...warehouseIngredient
+            };
+            const trash = trashService.getTrash();
+            const trashCopy = { ...trash}
+            const auditRecord = {
+                message: `Order => Wasted: ${ingradient} ${result} (limit: ${maxQuantityOfIngradient} ) `,
+                warehouses,
+                restaurantBudget,
+                trash: trashCopy
+            }
+            audit.addToAudit(auditRecord);
 
             // Повертаємо кількість, яку можемо добавити на склад готових страв.
             return quantity

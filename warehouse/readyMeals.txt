@@ -1,1 +1,1 @@
-{"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":2,"Youth Sauce":0,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":0,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3}
+{"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3}

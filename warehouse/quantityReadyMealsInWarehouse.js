@@ -4,6 +4,7 @@ const notBaseIngradients = require("../menu/notBaseIngradients")
 const readyMeals = require("./readyMeals")
 const operationWithTotalQuantityOfAllInWarehouse = require("./operationWithTotalQuantityOfAllInWarehouse")
 const quantityIngradientsInWarehouse = require("./quantityIngradientsInWarehouse")
+const audit = require('../restaurantLogs/audit');
 
 // Функція, яка перевіряє максимальну допустиму кількість готових страв на складі. Тобто, кожну страву окремо.
 module.exports.checkQuantityOfReadyMeals = function checkQuantityOfReadyMeals(food, quantity) {
@@ -23,9 +24,11 @@ module.exports.checkQuantityOfReadyMeals = function checkQuantityOfReadyMeals(fo
         var result2 = operationWithTotalQuantityOfAllInWarehouse.checkTotalQuantity(quantityIngradientsInWarehouse.getTotalQuantityOfIngradients(),exports.getTotalQuantityOfReadyMeals())
         if (result2 === true){
 
+
         } else {
             console.log("Кількість товару перевищує загальну місткість складу.")
             console.log("Товар не буде добавлено на склад.")
+
             return false
         }
 
@@ -40,12 +43,14 @@ module.exports.checkQuantityOfReadyMeals = function checkQuantityOfReadyMeals(fo
             // Показуємо, скільки зайвих страв було замовлено.
             console.log("Кількість замовлення перевищена: " + food + " - " + result)
 
+
             // Повертаємо кількість, яку можемо добавити на склад готових страв.
             return quantity
 
         }
 
         // Якщо сума готових страв і замовлених не перевищує ліміт, то просто повертаємо значення кількості замовлення.
+
         return quantity
     }
 }

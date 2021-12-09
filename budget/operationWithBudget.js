@@ -18,7 +18,7 @@ module.exports.Calculate = function Calculate() {
     operationwithLogs.writeLogs()
 
     // Функція, якій передаємо параметрами бюджет і віднімаємо від нього ціну страви.
-    exports.removeFromBudget(parseFloat(restaurantBudget.budget) - parseFloat(user.getPrice()))
+    // exports.removeFromBudget(parseFloat(restaurantBudget.budget) - parseFloat(user.getPrice()))
 
     // Якщо ціна без податку більша з 0, то додаємо її до бюджета.
     if (result <= 0) {
@@ -115,3 +115,21 @@ Number.prototype.toFixedNumber = function (digits, base) {
     var pow = Math.pow(base || 10, digits);
     return Math.round(this * pow) / pow;
 }
+
+module.exports.modifyRestaurantBudget = (sign, amount) => {
+    if (sign === '=') {
+        restaurantBudget.budget = amount;
+        fs.writeFileSync(__dirname + "/restaurantBudget.txt", JSON.stringify((restaurantBudget.budget.toFixedNumber(1))))
+    }
+    if (sign === '+') {
+        restaurantBudget.budget += amount;
+        fs.writeFileSync(__dirname + "/restaurantBudget.txt", JSON.stringify((restaurantBudget.budget.toFixedNumber(1))))
+
+    }
+    if (sign === '-') {
+        restaurantBudget.budget -= amount;
+        fs.writeFileSync(__dirname + "/restaurantBudget.txt", JSON.stringify((restaurantBudget.budget.toFixedNumber(1))))
+    }
+}
+
+// module.exports = { modifyRestaurantBudget };

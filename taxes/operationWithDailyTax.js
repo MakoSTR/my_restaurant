@@ -4,6 +4,7 @@ const purchaseTax = require("./purchaseTax")
 const operationWithPurchaseTax = require("./operationWithPurchaseTax")
 const operationWithBudget = require("../budget/operationWithBudget")
 const restaurantBudget = require("../budget/restaurantBudget")
+const audit = require('../restaurantLogs/audit');
 
 module.exports.startBudget = startBudget = 0
 module.exports.endBudget = endBudget = 0
@@ -50,6 +51,12 @@ module.exports.Calculate = function Calculate() {
 
         // Виводимо інформацію про прибуток.
         console.log("Щоденний прибуток: " + result.toFixed(1))
+
+        const endMessage = {
+            "DAILY TAX": result.toFixed(1)
+        }
+
+        audit.addToAudit(endMessage);
         // Виводимо інформацію про податок.
         console.log("Щоденний податок: " + value.toFixed(1))
         console.log("-------------------------------------------------------------")
