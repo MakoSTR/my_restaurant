@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">38.46% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>5/13</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -84,32 +84,32 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require("fs")
 const totalQuantity = require("./allowableQuantityInStock/totalQuantity")
@@ -117,26 +117,26 @@ const quantityIngradientsInWarehouse = require("./quantityIngradientsInWarehouse
 const quantityReadyMealsInWarehouse = require("./quantityReadyMealsInWarehouse")
 &nbsp;
 // Функція, яка перевіряє, чи є місце для замовлення.
-module.exports.checkTotalQuantity = function checkTotalQuantity(ingradients, readyMeals) {
+module.exports.checkTotalQuantity = function <span class="fstat-no" title="function not covered" >checkTotalQuantity(</span>ingradients, readyMeals) {
 &nbsp;
     // Отримуємо максимальне значення кількості всіх матеріалів на складі.
-    var result1 = totalQuantity.totalQuantity
-    console.log("Максимальна кількість: " + result1)
+    var result1 = <span class="cstat-no" title="statement not covered" >totalQuantity.totalQuantity</span>
+<span class="cstat-no" title="statement not covered" >    console.log("Максимальна кількість: " + result1)</span>
 &nbsp;
     // Отримуємо суму всіх інградієнтів і готових страв на складі.
-    var result2 = ingradients + readyMeals
-    console.log("Загальна кількість: " + result2)
+    var result2 = <span class="cstat-no" title="statement not covered" >ingradients + readyMeals</span>
+<span class="cstat-no" title="statement not covered" >    console.log("Загальна кількість: " + result2)</span>
 &nbsp;
     // Отримуємо число. Якщо місце на складі є, воно завжди буде додатне. Якщо місця немає, то від'ємним.
-    var result3 = result1 - result2
+    var result3 = <span class="cstat-no" title="statement not covered" >result1 - result2</span>
 &nbsp;
     // Якщо число додатне, то місце є, нічого не робимо.
-    if (result3 &gt;= 0) {
+<span class="cstat-no" title="statement not covered" >    if (result3 &gt;= 0) {</span>
 &nbsp;
-        return true
+<span class="cstat-no" title="statement not covered" >        return true</span>
     } else {
         // Якщо місця немає, то повертаємо значення, щоб повідомити користувача про ліміт і для подальшого виходу з програми.
-        return result3
+<span class="cstat-no" title="statement not covered" >        return result3</span>
     }
 }</pre></td></tr></table></pre>
 
@@ -145,7 +145,7 @@ module.exports.checkTotalQuantity = function checkTotalQuantity(ingradients, rea
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 03 2021 18:20:14 GMT+0200 (за східноєвропейським стандартним часом)
+                at Wed Dec 15 2021 13:27:16 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

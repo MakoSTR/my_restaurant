@@ -1,1 +1,1 @@
-{"Chicken":0,"Tuna":0,"Potatoes":0,"Asparagus":0,"Milk":0,"Honey":0,"Paprika":0,"Garlic":0,"Water":0,"Lemon":0,"Tomatoes":0,"Pickles":0,"Feta":0,"Vinegar":0,"Rice":0,"Chocolate":0,"T":"0uu","C":0,"P":0}
+{"Chicken":0,"Tuna":0,"Potatoes":0,"Asparagus":0,"Milk":0,"Honey":0,"Paprika":0,"Garlic":0,"Water":0,"Lemon":0,"Tomatoes":0,"Pickles":0,"Feta":0,"Vinegar":0,"Rice":0,"Chocolate":0}

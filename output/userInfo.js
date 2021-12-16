@@ -15,6 +15,7 @@ const readyMeals = require("../warehouse/readyMeals")
 const operationWithLogs = require("../restaurantLogs/operationWithLogs")
 const auditAction = require('../restaurantLogs/audit');
 const fs = require("fs");
+const tipsService = require('../tips/tips')
 
 // Функція, яки виводить базову інформацію для користувача.
 module.exports.StartInfoForUser = function StartInfoForUser() {
@@ -47,7 +48,7 @@ module.exports.StartInfoForUser = function StartInfoForUser() {
 
     // Бюджет користувача після замовлення.
     if (user.getFullPayment() <= 0) {
-        console.log("Your budget after pay: " + user.getBudget())
+        console.log("Your budget after pay: " +  exports.budgetAfterPay())
     } else {
         console.log("Your budget after pay: " + exports.budgetAfterPay())
     }
@@ -124,20 +125,39 @@ module.exports.haveAllergy = function haveAllergy() {
 }
 
 // Функція, яка повертає бюджет користувача після операції покупки.
+
 module.exports.budgetAfterPay = function budgetAfterPay() {
+    let restOfUserBudget = user.getBudget() - user.getFullPayment()
+    let tipsValue = +parseFloat((tipsService.getTipsValue() / 100) * parseFloat(user.getFullPayment().toFixed(2)));
+// Передаємо значення бюджета після операції покупки у user.js (-> user/user.js).
+    if (restOfUserBudget >= tipsValue) {
+        tipsValue = tipsValue;
+        let setBudgetAfterPay = user.setBudgetAfterPay(restOfUserBudget - tipsValue);
+        return +parseFloat(setBudgetAfterPay).toFixed(2);
+    } else if (restOfUserBudget < 0) {
+        tipsValue = restOfUserBudget
+        let setBudgetAfterPay = user.setBudgetAfterPay(restOfUserBudget - tipsValue)
+        return +parseFloat(setBudgetAfterPay).toFixed(2)
 
-    // Передаємо значення бюджета після операції покупки у user.js (-> user/user.js).
-    user.setBudgetAfterPay(user.getBudget() - user.getFullPayment())
-
-    // Повертаємо значення бюджета після покупки.
-    return user.getBudgetAfterPay()
+    }
+    //  user.getBudgetAfterPay()
+    // return
 }
+
+// module.exports.budgetAfterPay = function budgetAfterPay() {
+//
+//     // Передаємо значення бюджета після операції покупки у user.js (-> user/user.js).
+//     user.setBudgetAfterPay(user.getBudget() - user.getFullPayment())
+//
+//     // Повертаємо значення бюджета після покупки.
+//     console.log(user.getBudgetAfterPay() + " - @@@@@@@@@@@@@@@@@@@")
+//     return user.getBudgetAfterPay()
+// }
 
 // Функція перевірки, чи користувач зможе замовити їжу. Якщо бюджет після покупки менше 0, то повертає false.
 module.exports.canBuy = function canBuy() {
-
     // Перевірка бюджету.
-    if (exports.budgetAfterPay() >= 0) {
+    if (user.getBudgetAfterPay() >= 0) {
 
         // Повертає true, якщо бюджет більше 0.
         return true

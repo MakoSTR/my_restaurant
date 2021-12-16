@@ -100,6 +100,7 @@ module.exports.getHaveAllergy = function getHaveAllergy() {
 
 module.exports.setBudgetAfterPay = function setBudgetAfterPay(budgetAfterPay) {
     this.budgetAfterPay = budgetAfterPay
+    return budgetAfterPay
 }
 
 module.exports.getBudgetAfterPay = function getBudgetAfterPay() {

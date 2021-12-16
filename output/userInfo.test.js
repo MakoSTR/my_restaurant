@@ -3,7 +3,9 @@ const user = require("../user/user");
 const systemCommands = require("../systemCommands/systemCommands")
 const operationWithVisits = require("../visits/operationWithVisits");
 const audit = require("../restaurantLogs/operationWithLogs");
+const tipsService = require("../tips/tips");
 
+describe('User Function', () => {
 test("Функція, яка перевіряє, скільки користувач повинен заплатити за страву разом з націнкою.", function () {
 
     user.setPrice(100)
@@ -23,13 +25,18 @@ test("Функція, яка перевіряє, чи немає користу�
     expect(result2).toContain(["Soy"].toString())
 })
 
-test("Функція, яка перевіряє бюджет користувача після замовлення.", function () {
+test("Функція, яка перевіряє бюджет користувача після замовлення і виданих чаєвих.", function () {
+    // user.setBudget(1000)
+    // user.setPrice(100)
+    tipsService.getTipsValue = jest.fn(() => 0);
+    // tipsService.getTipsValue = jest.fn(tipsService.getTipsValue).mockImplementation(() => 0)
 
-    user.setBudget(1000)
-    user.setPrice(100)
-
-    var result = userInfo.budgetAfterPay(user.getBudget() - userInfo.fullPayment())
-    expect(result).toBe(860)
+    user.getBudget = jest.fn(() => 50);
+    // user.getBudget = jest.fn(user.getBudget).mockImplementation(() => 50)
+    // user.getFullPayment = jest.fn(user.getFullPayment).mockImplementation(() => 39.1)
+    user.getFullPayment = jest.fn(() => 39.1);
+    let result = userInfo.budgetAfterPay()
+    expect(result).toBe(10.9)
 })
 
 test("test userInfo.js | canBuy() function", function () {
@@ -109,5 +116,6 @@ test("test userInfo.js | start() function", function () {
     user.setHaveAllergy(["Soy"])
     var result = userInfo.start()
     expect(result).toBe(false)
-})
+});
+});
 

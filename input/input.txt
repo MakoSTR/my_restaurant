@@ -1,14 +1,3 @@
-Budget, =, 1000
-Order, Fries, 11
-Throw trash away
-Buy, Alexandra Smith, Fries
-Buy, Bernard Unfortunate, Fries
-Buy, Alexandra Smith, Fries
-Order, Fries, 11
-Morningstar, Alexandra Smith, Adam Smith, Irish Fish, Fries
-Order, Diamond Salad, 4
-Order, Fries, 6
-Throw trash away
-Order, Fries, 51
-Buy, Alexandra Smith, Fries
+Budget, =, 100
+Order, Fries, 1
 Audit, Resources

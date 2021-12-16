@@ -13,6 +13,7 @@ const operationWithTaxes = require("../taxes/operationWithTax");
 const audit = require('../restaurantLogs/audit');
 const trashService = require('../services/trashService');
 const wasteLimit = require('../resources/configuration.json');
+const volatilityAmount = require('../volatility/volatility');
 
 
 // Потрібно зробити покупку готових страв, максимум 3. Доробити пункт 6.7.4
@@ -88,6 +89,7 @@ module.exports.removeMoney = function removeMoney(food, quantity) {
 
             // Підраховуємо ціну страви разом з її кількістю і податок, після чого додаємо це значення у локальну змінну.
             value = value + (price * quantity[i]).toFixed(1)
+            console.log(parseFloat(value))
         } else {
 
             // Якщо страви немає у меню, то повертаємо false для тестування.
@@ -96,12 +98,16 @@ module.exports.removeMoney = function removeMoney(food, quantity) {
     }
 
     //
-    var result = operationWithTaxes.addTaxes(value)
 
+    let volatility = volatilityAmount.randomVolatilityData()[1]
+
+    let result = operationWithTaxes.addTaxes(value) * volatility
+    console.log(result.toFixed(2) + " - Price with volatility")
     // Віднімаємо ціну страв, які закупляємо.
     operationWithBudget._removeFromBudget(result)
 
 
     // Повертаємо значення бюджету для тестування.
+    console.log(restaurantBudget.budget + " - Budget after subtracting price - tax - volatility")
     return restaurantBudget.budget
 }

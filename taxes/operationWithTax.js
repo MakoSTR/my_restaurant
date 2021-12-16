@@ -2,6 +2,7 @@ const operationWithPurchaseTax = require("./operationWithPurchaseTax")
 const fs = require("fs")
 const tax = require("./tax")
 const operationWithLogs = require("../restaurantLogs/operationWithLogs")
+const volatilityAmount = require('../volatility/volatility')
 
 // Функція, яка вираховує податок і записує його у файл. А повертає ціну вже з вирахуваним податком.
 module.exports.withdrawTaxes = function withdrawTaxes(value) {
@@ -30,7 +31,10 @@ module.exports.addTaxes = function addTaxes(value) {
     // Отримаєумо 10% від ціни в параметрі (10% по дефолту).
     var result = value * tax.tax
     // Додаємо податок до ціни.
-    value = parseFloat(value) + parseFloat(result.toFixed(1))
+    value = (parseFloat(value) + parseFloat(result.toFixed(1)))
+    // console.log(parseFloat(value) + parseFloat(result.toFixed(1)) + " - @@@@@@@@@@@@@@@@@")
+    // console.log(volatilityAmount.randomVolatilityData()[0] + " - !!!!!!!!!!!!!!!!!!!!!!!!!")
+    console.log(value)
 
     // Записуємо інформацію про податок в логи.
     operationWithLogs.addLogs("Податок на замовлення: " + result)
