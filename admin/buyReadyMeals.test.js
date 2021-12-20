@@ -7,6 +7,8 @@ const warehouseIngradients = require("../warehouse/warehouseIngradients");
 const buyIngradients = require("./buyIngradients");
 const restaurantBudget = require("../budget/restaurantBudget");
 const operationWithBudget = require("../budget/operationWithBudget");
+const tipsService = require("../tips/tips");
+const volatility = require("../volatility/volatility");
 
 test("", function () {
 
@@ -40,14 +42,16 @@ test("Функція, яка перевіряє, що кошти за купів
         console.log("Перевіряємо.")
     })
 
+    volatility.randomVolatilityData = jest.fn(() => 0.9);
+
     var result4 = restaurantBudget.budget
     var result1 = buyReadyMeals.removeMoney(["Emperor Chicken"], [1])
-    var result5 = 312.4
+    var result5 = 312.4 * volatility.randomVolatilityData
     expect(parseFloat(result1)).toBe(parseFloat(result4) - result5)
     operationWithBudget._addToBudget(result5)
 
     var result2 = buyReadyMeals.removeMoney(["Emperor Chicken"], [2])
-    var result6 = 312.4 * 2
+    var result6 = 312.4 * 2 * volatility.randomVolatilityData
     expect(parseFloat(result2)).toBe(parseFloat(result4) - result6)
     operationWithBudget._addToBudget(result6)
 

@@ -8,7 +8,8 @@ const operationWithTaxes = require("../taxes/operationWithTax")
 const quantityInWarehouse = require("../warehouse/quantityIngradientsInWarehouse");
 const systemCommands = require("../systemCommands/systemCommands")
 const operationWithChanceToSpoil = require("../warehouse/operationWithChanceToSpoil")
-const operationWithWaste = require("../warehouse/operationWithWaste")
+const operationWithWaste = require("../warehouse/operationWithWaste");
+const volatilityAmount = require('../volatility/volatility');
 
 // Функція, яка отримує масиви з інградієнтами і їх кількістю, щоб у подальшому добавити їх на склад.
 module.exports.addIngradients = function addIngradients(ingradients, quantity) {
@@ -81,10 +82,17 @@ module.exports.removeMoney = function removeMoney(ingradients, quantity) {
     // Масив зі всіма інградієнтами передаємо функції price() (-> getPrice.js), яка обраховує загальну їх вартість.
     var money = getPrice.price(ingradientsArray)
 
-    var result = operationWithTaxes.addTaxes(money)
+    let volatility = volatilityAmount.randomVolatilityData()[1]
+
+    let result = operationWithTaxes.addTaxes(money) * volatility
+
+    console.log(result.toFixed(2) + " - Price with volatility")
+
 
     // Передаємо змінну money з ціною у функцію _removeFromBudget(), яку потрібно зняти з бюджета.
     operationWithBudget.removeFromBudget(parseFloat(restaurantBudget.budget) - parseFloat(result))
+
+    console.log(restaurantBudget.budget + " - Budget after subtracting price - tax - volatility")
 
     return restaurantBudget.budget
 }

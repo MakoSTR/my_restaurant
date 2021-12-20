@@ -1,4 +1,5 @@
 {
   "order": "dishes",
-  "waste limit": 50
+  "waste limit": 50,
+  "max tip": 10
 }

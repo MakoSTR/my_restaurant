@@ -5,3 +5,4 @@ test("Функція, яка перевіряє значення податку.
     var result = tax.tax
     expect(result).toBe(0.1)
 })
+

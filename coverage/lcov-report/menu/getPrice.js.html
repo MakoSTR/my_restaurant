@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">23.07% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>3/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>3/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,68 +88,68 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">5x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">38x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const baseIngradients = require("./baseIngradients")
 &nbsp;
 // Пусте число, в яке ми записуємо загальну суму інградієнтів, які входять у страву.
 var money = 0
 // Функція, яка отримує у параметрі масив інградієнтів, перебирає його і обраховую ціну. Результат записує у змінну money.
-function getAllPrice(ingradients) {
+function <span class="fstat-no" title="function not covered" >getAllPrice(</span>ingradients) {
     // Цикл перебору інградієнтів.
-    for (var i = 0; i &lt; ingradients.length; i++) {
+<span class="cstat-no" title="statement not covered" >    for (var i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; ingradients.length; i++) {</span>
         // Якщо елемент входить у список з базовими інградієнтами, то отримуємо його ціну і додаємо у локальну змінну money
-        if (baseIngradients.baseIngradients.hasOwnProperty(ingradients[i])){
+<span class="cstat-no" title="statement not covered" >        if (baseIngradients.baseIngradients.hasOwnProperty(ingradients[i])){</span>
             // Добавляємо ціну кожного інградієнта у змінну money.
-            money = money + baseIngradients.baseIngradients[ingradients[i]]
+<span class="cstat-no" title="statement not covered" >            money = money + baseIngradients.baseIngradients[ingradients[i]]</span>
         } else {
-            console.log("EXIT: getPrice.js/14")
-            return false
+<span class="cstat-no" title="statement not covered" >            console.log("EXIT: getPrice.js/14")</span>
+<span class="cstat-no" title="statement not covered" >            return false</span>
         }
     }
     // Повертаємо результат, а саме - загальну ціну, у функцію price().
-    return money
+<span class="cstat-no" title="statement not covered" >    return money</span>
 }
 &nbsp;
 // Функція, яка повертає ціну за всі базові інградієнти, які ми передаємо у параметрі.
-module.exports.price = function price(ingradients) {
+module.exports.price = function <span class="fstat-no" title="function not covered" >price(</span>ingradients) {
     // Передаємо інградієнти, які отримуємо в параметрі у функцію getAllPrice(), а результат її присвоюємо у змінну result.
-    var result = getAllPrice(ingradients)
+    var result = <span class="cstat-no" title="statement not covered" >getAllPrice(ingradients)</span>
     // Важливо ! Після отримання ціни, ми передаємо її дальше, а локальну зміну потрібно ресетнути.
     // Ресет для того, щоб при наступному замовлення локальна зміна була пуста.
     // Якщо не буде пустою - то замість однієї ціни, буде - дві.
-    money = 0
+<span class="cstat-no" title="statement not covered" >    money = 0</span>
     // Результат повертаємо у main.js.
-    return result
+<span class="cstat-no" title="statement not covered" >    return result</span>
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -157,7 +157,7 @@ module.exports.price = function price(ingradients) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 03 2021 18:20:14 GMT+0200 (за східноєвропейським стандартним часом)
+                at Wed Dec 15 2021 13:27:16 GMT+0200 (Eastern European Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

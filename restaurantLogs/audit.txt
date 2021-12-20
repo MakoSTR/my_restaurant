@@ -1,63 +1,361 @@
 INIT
-            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":2,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 858.1
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 995.9
             Daily Tax: 0
 
             Trash: {}
             START
             
  command: => Action Budget = 1000 => Restaurant Budget: 1000
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":2,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
             Restaurant Budget: 1000
             Trash: {}
- command: => Order =>  Success: Fries 1; Wasted: Fries 10
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 963.7
-            Trash: {"Potatoes":10}
- command: => Action Throw trash away => Throw trash away
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 963.7
-            Trash: {}
- command: => Alexandra Smith, Fries => success
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":2,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 967.1
-            Trash: {}
- command: =>  => can’t order, allergic to: Potatoes
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":1,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 967.1
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.5
             Trash: {"Potatoes":1}
- command: => Alexandra Smith, Fries => success
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":0,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 970.9
-            Trash: {"Potatoes":1}
- command: => Order =>  Success: Fries 3; Wasted: Fries 8
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 934.6
-            Trash: {"Potatoes":9}
- command: => Action Morningstar => command disabled
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 934.6
-            Trash: {"Potatoes":9}
- command: => Order Diamond Salad 4 => Wasted Diamond Salad 4
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 877.4
-            Trash: {"Potatoes":9,"Tomatoes":4,"Pickles":4,"Feta":4}
- command: => Order Fries 6 => Wasted Fries 6
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 857.6
-            Trash: {"Potatoes":15,"Tomatoes":4,"Pickles":4,"Feta":4}
- command: => Action Throw trash away => Throw trash away
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 857.6
+ DAILY TAX: 1.6
+        RESTAURANT BUDGET: 997.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.2
+            Daily Tax: 0
+
             Trash: {}
- command: => Order Fries 51 => Wasted Fries 51
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 689.3
-            Trash: {"Potatoes":51}
- command: => Restaurant Poisoned
-            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":3,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":3,"Chicken":10,"Tuna":6,"Potatoes":0,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
-            Restaurant Budget: 689.3
-            Trash: {"Potatoes":51}
+            START
+            
+ command: => Action Budget = 1000 => Restaurant Budget: 1000
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 1000
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 995.9
+            Trash: {"Potatoes":1}
  DAILY TAX: 0
-        RESTAURANT BUDGET: 689.3
+        RESTAURANT BUDGET: 1000
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 995.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 1000 => Restaurant Budget: 1000
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 1000
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 1.6
+        RESTAURANT BUDGET: 997.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.2
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 1000 => Restaurant Budget: 1000
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 1000
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0.3
+        RESTAURANT BUDGET: 997.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 997.4
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 1000 => Restaurant Budget: 1000
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 1000
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 995.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 1000
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 995.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 100
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 100
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 1.6
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.2
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0.3
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.4
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 100
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 1.6
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.2
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 100
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 1.6
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.2
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0.3
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.4
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0.1
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":3,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 0
+        RESTAURANT BUDGET: 100
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 62.9
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 34.6
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: null
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 97.5
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 78
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 97.5
+            Trash: {"Potatoes":1}
+ DAILY TAX: 19.5
+        RESTAURANT BUDGET: 97.5
+        AUDIT ENDINIT
+            Warehouses: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 93.6
+            Daily Tax: 0
+
+            Trash: {}
+            START
+            
+ command: => Action Budget = 100 => Restaurant Budget: 100
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 100
+            Trash: {}
+ command: => Order Fries 1 => Wasted Fries 1
+            Warehouse: {"Emperor Chicken":2,"Fat Cat Chicken":3,"Princess Chicken":3,"Youth Sauce":3,"Spicy Sauce":3,"Omega Sauce":3,"Diamond Salad":3,"Ruby Salad":3,"Fries":3,"Smashed Potatoes":0,"Tuna Cake":3,"Fish In Water":3,"Irish Fish":0,"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+            Restaurant Budget: 95.9
+            Trash: {"Potatoes":1}
+ DAILY TAX: 2.3
+        RESTAURANT BUDGET: 95.9
         AUDIT END
