@@ -26,14 +26,11 @@ test("Функція, яка перевіряє, чи немає користу�
 })
 
 test("Функція, яка перевіряє бюджет користувача після замовлення і виданих чаєвих.", function () {
-    // user.setBudget(1000)
-    // user.setPrice(100)
+
     tipsService.getTipsValue = jest.fn(() => 0);
-    // tipsService.getTipsValue = jest.fn(tipsService.getTipsValue).mockImplementation(() => 0)
 
     user.getBudget = jest.fn(() => 50);
-    // user.getBudget = jest.fn(user.getBudget).mockImplementation(() => 50)
-    // user.getFullPayment = jest.fn(user.getFullPayment).mockImplementation(() => 39.1)
+
     user.getFullPayment = jest.fn(() => 39.1);
     let result = userInfo.budgetAfterPay()
     expect(result).toBe(10.9)
