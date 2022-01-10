@@ -173,9 +173,13 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                 warehouseIngradients.warehouseIngradients[result[0][i]] = warehouseIngradients.warehouseIngradients[result[0][i]] - 1
                 // Перевіряємо, чи є інградієнт на складі для подальшого виконання замовлення.
                 ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result[0][i]])
+                // console.log("@warehouseIngradients@ " + warehouseIngradients.warehouseIngradients["Potatoes"])
+                if (ingredientAmount === false){
+                    warehouseIngradients.warehouseIngradients[result[i]] = 0
+                }
                 // Перевіряємо інградієнт на псування.
                 var result4 = operationWithChanceToSpoil.chackChanceToSpoil()
-                // Якщо він зіпсований, то виконуємо наступні комаанди.
+                // Якщо він зіпсований, то виконуємо наступні команди.
                 if (result4 >= 1) {
 
                     // Віднімаємо кількість зіпсованих інградієнтів на складі.
@@ -231,8 +235,13 @@ module.exports.removeIngradientsFromWarehouse = function removeIngradientsFromWa
                                     // Записуємо, які саме і скільки інградієнтів було зупсовано.
                                     operationWithWaste.addToWaste([result2[k], result3])
                                 }
+
                                 // Перевіряємо, чи є інградієнт у наявності для подальшого виконання замовлення.
                                 ingredientAmount = exports.checkIngradients(warehouseIngradients.warehouseIngradients[result2[k]])
+                                if (ingredientAmount === false){
+                                    warehouseIngradients.warehouseIngradients[result2[k]] = 0
+                                }
+
                             }
                         }
                     }

@@ -13,21 +13,23 @@ class Audit {
             `INIT
             Warehouses: ${JSON.stringify(this.auditData[0].initialWarehouses)}
             Restaurant Budget: ${this.auditData[0].initialBudget}
-            Daily Tax: 0\r\n
-            Trash: {}
             START
             `
         ;
         fs.appendFileSync(auditFilePath, message)
     }
+    // Було в ініт вище.
+    // Daily Tax: 0
+    // Trash: {}
 
     end = (endRestaurantBudget) => {
         // const dailyTaxSum = taxService.dailyTaxSum(tax, endRestaurantBudget, startRestaurantBudget);
         let dailyTax = this.auditData[this.auditData.length-1]['DAILY TAX']  > 0 ? this.auditData[this.auditData.length-1]['DAILY TAX'] : 0;
 
-        const message = `\n\r DAILY TAX: ${dailyTax}\r
-        RESTAURANT BUDGET: ${endRestaurantBudget}
-        AUDIT END`;
+        const message = ""
+            // `\n\r DAILY TAX: ${dailyTax}\r
+        // `RESTAURANT BUDGET: ${endRestaurantBudget}
+        // `AUDIT END`;
         fs.appendFileSync(auditFilePath, message)
     };
 
@@ -41,14 +43,15 @@ class Audit {
             if (audit.message) {
                 const message =
                     `\r\n command: => ${audit.message}
-            Warehouse: ${JSON.stringify(audit.warehouses)}
-            Restaurant Budget: ${budgetRes}
-            Trash: ${JSON.stringify(audit.trash)}`
+            Warehouse: ${JSON.stringify(audit.warehouses)}`
+            // Restaurant Budget: ${budgetRes}`
+            // Restaurant Budget after `
+            // Trash: ${JSON.stringify(audit.trash)}`
 
             fs.appendFileSync(auditFilePath, message)
             }
         })
-        const endRestaurantBudget = this.auditData[this.auditData.length-2].restaurantBudget;
+        const endRestaurantBudget = this.auditData[this.auditData.length-2];
         this.end(endRestaurantBudget);
     }
 

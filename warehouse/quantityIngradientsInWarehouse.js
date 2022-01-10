@@ -39,17 +39,16 @@ module.exports.checkQuantityOfIngradients = function checkQuantityOfIngradients(
 
         // Перевіряємо, чи перевищує сума поточної кількості інградієнту і замовленої.
         // Якщо перевищує, то виконуємо наступні операції.
-        if (result > maxQuantityOfIngradient) {
+        if (result >= maxQuantityOfIngradient) {
 
             // Від отриманого результату віднімаємо максимальну допустиму кількість.
             result = result - maxQuantityOfIngradient
             // Тепер отримуємо кількість, яку ми можемо добавити на склад.
-            quantity = quantity - result
+            quantity = parseInt(quantity) - parseInt(result)
+
 
             // Показуємо, скільки зайвих інградієнтів було замовлено.
             console.log("Кількість замовлення перевищена: " + ingradient + " - " + result) // 1
-
-
 
             const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
             const readyMeal = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));

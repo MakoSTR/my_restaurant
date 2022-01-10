@@ -24,11 +24,11 @@ test("", function () {
 
     readyMeals.readyMeals["Emperor Chicken"] = 1
     var result1 = buyReadyMeals.addReadyMeals(["Emperor Chicken"], [1])
-    expect(result1["Emperor Chicken"]).toBe(2)
+    expect(result1[0]["Emperor Chicken"]).toBe(2)
 
     readyMeals.readyMeals["Emperor Chicken"] = 1
     var result2 = buyReadyMeals.addReadyMeals(["Emperor Chicken"], [5])
-    expect(result2["Emperor Chicken"]).toBe(3)
+    expect(result2[0]["Emperor Chicken"]).toBe(3)
 
     var result3 = buyReadyMeals.addReadyMeals(["EvilChicken"], [2])
     expect(result3).toBe(false)

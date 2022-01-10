@@ -1,1 +1,1 @@
-{"Chicken":10,"Tuna":-46,"Potatoes":-49,"Asparagus":10,"Milk":9,"Honey":7,"Paprika":10,"Garlic":10,"Water":10,"Lemon":10,"Tomatoes":10,"Pickles":10,"Feta":10,"Vinegar":10,"Rice":10,"Chocolate":10}
+{"Chicken":318,"Tuna":997,"Potatoes":990,"Asparagus":308,"Milk":306,"Honey":294,"Paprika":1000,"Garlic":1000,"Water":1000,"Lemon":1000,"Tomatoes":967,"Pickles":971,"Feta":971,"Vinegar":1000,"Rice":1000,"Chocolate":1000}

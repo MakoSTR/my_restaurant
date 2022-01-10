@@ -50,6 +50,7 @@ module.exports.checkUser = function checkUser(name, budget, food, allergy) {
         return false
     }
 
+
     // Якщо у користувача більше 10ти алергій, то зупиняємо виконання програми.
     if (allergy.length > 10) {
         console.log("EXIT: checkUserData.js")

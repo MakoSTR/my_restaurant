@@ -1,3 +1,2 @@
-Budget, =, 100
-Order, Fries, 1
+Table, Pooled, Alexandra Smith, Adam Smith, Barbara Smith, Julie Mirage, Princess Chicken, Princess Chicken, Princess Chicken, Princess Chicken
 Audit, Resources

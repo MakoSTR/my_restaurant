@@ -5,6 +5,8 @@ const operationWithPurchaseTax = require("./operationWithPurchaseTax")
 const operationWithBudget = require("../budget/operationWithBudget")
 const restaurantBudget = require("../budget/restaurantBudget")
 const audit = require('../restaurantLogs/audit');
+const operationWithGarbageTax = require("../taxes/operationWithGarbageTax")
+const waste = require("../warehouse/waste")
 
 module.exports.startBudget = startBudget = 0
 module.exports.endBudget = endBudget = 0
@@ -25,6 +27,20 @@ module.exports.openRestaurant = function openRestaurant() {
 
 // Функція, яка записує кінцеве значення бюджета і податків за всю роботу програми.
 module.exports.closeRestaurant = function closeRestaurant() {
+
+    var wastedIngadients = {}
+
+    for (var i = 0; i < Object.keys(waste.waste).length; i++){
+
+        if (Object.values(waste.waste)[i] > 0){
+
+            wastedIngadients[Object.keys(waste.waste)[i]] = Object.values(waste.waste)[i]
+        }
+    }
+
+    console.log(wastedIngadients)
+
+    operationWithGarbageTax.getGarbageTax(wastedIngadients)
 
     // Записуємо кінцеве значення бюджета.
     exports.endBudget = budget.budget

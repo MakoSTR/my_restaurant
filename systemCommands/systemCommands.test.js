@@ -8,6 +8,6 @@ test("Логіки в даній перевірці немає. Node js хоче
         console.log("Виходимо з програми.")
     })
 
-    var result = systemCommands.EXIT()
+    var result = systemCommands.EXIT("test")
     expect(result).toBe(true)
 })

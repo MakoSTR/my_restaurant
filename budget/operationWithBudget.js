@@ -20,6 +20,8 @@ module.exports.Calculate = function Calculate() {
     // Функція, якій передаємо параметрами бюджет і віднімаємо від нього ціну страви.
     // exports.removeFromBudget(parseFloat(restaurantBudget.budget) - parseFloat(user.getPrice()))
 
+    // console.log("BUDGET: " + restaurantBudget.budget)
+
     // Якщо ціна без податку більша з 0, то додаємо її до бюджета.
     if (result <= 0) {
 
@@ -50,7 +52,7 @@ module.exports.removeFromBudget = function removeFromBudget(value) {
     fs.writeFileSync(__dirname + "/restaurantBudget.txt", JSON.stringify(value.toFixedNumber(1)))
 
     // Присвоюємо нове значення змінній, яка в собі має значення бюджета.
-    restaurantBudget.budget = JSON.stringify(parseFloat(value))
+    // restaurantBudget.budget = JSON.stringify(parseFloat(value))
 
     // Викликаємо функцію, яка перевіряє бюджет. Якщо в ньому менше 0, то оголошуємо банкротство.
     exports.checkBudgetForBankruptcy()

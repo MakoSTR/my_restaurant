@@ -10,6 +10,8 @@ const systemCommands = require("../systemCommands/systemCommands")
 const operationWithChanceToSpoil = require("../warehouse/operationWithChanceToSpoil")
 const operationWithWaste = require("../warehouse/operationWithWaste");
 const volatilityAmount = require('../volatility/volatility');
+const operationWithLost = require("../restaurantLogs/operationWithLogs")
+const operationWithGarbageTax = require("../taxes/operationWithGarbageTax");
 
 // Функція, яка отримує масиви з інградієнтами і їх кількістю, щоб у подальшому добавити їх на склад.
 module.exports.addIngradients = function addIngradients(ingradients, quantity) {
@@ -24,16 +26,44 @@ module.exports.addIngradients = function addIngradients(ingradients, quantity) {
             // if (result === false) return
             var quantity2 = result
 
+
             if (quantity2 !== 0) {
-                // Процес додоавання інградієнтів на склад.
+                // Процес додавання інградієнтів на склад.
                 baseIngradients.warehouseIngradients[ingradients[i]] += parseInt(quantity2)
+
+                var wastedIngredients = {}
 
                 for (var j = 0; j < quantity2; j++) {
 
                     var result2 = operationWithChanceToSpoil.chackChanceToSpoil()
+
+
+                    if (wastedIngredients[ingradients[i]] > 0) {
+                        wastedIngredients[ingradients[i]] += result2
+                    } else {
+                        wastedIngredients[ingradients[i]] = 0
+                        wastedIngredients[ingradients[i]] += result2
+                    }
+
+                    // console.log("chackChanceToSpoil: " + result2)
+
+                    if (result2 > 0) {
+
+                        for (var k = 0; k < result2; k++) {
+                            ++j
+                        }
+                    }
+
                     baseIngradients.warehouseIngradients[ingradients[i]] -= result2
-                    operationWithWaste.addToWaste(ingradients[i] + result2)
+                    operationWithWaste.addToWaste([ingradients[i], result2])
+
                 }
+
+                if (Object.keys(wastedIngredients).length > 0) {
+
+                    operationWithGarbageTax.getGarbageTax(wastedIngredients)
+                }
+
             }
 
         } else {

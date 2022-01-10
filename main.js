@@ -17,11 +17,15 @@ const customersBudget = require('./resources/customersBudget.json');
 const customersAllergies = require('./resources/customersAllergies.json');
 const auditAction = require("./restaurantLogs/audit");
 const trashService = require("./services/trashService");
+const baseIngradients = require("./menu/baseIngradients")
+const notBaseIngradients = require("./menu/notBaseIngradients")
 
 const menu = require('./menu/notBaseIngradients.json');
 const wasteLimit = require('./resources/configuration.json');
+const operationWithLogs = require("./restaurantLogs/operationWithLogs");
+const {food} = require("./user/user");
 
-
+const x = 0
 /*
 ------------------------------------------------------------------------------------------------
 1. ГОЛОВНА ФУНКЦІЯ ПРОГРАМИ - main()
@@ -36,7 +40,7 @@ const wasteLimit = require('./resources/configuration.json');
 ------------------------------------------------------------------------------------------------
 */
 
-operationWithDailyTax.openRestaurant()
+// operationWithDailyTax.openRestaurant()
 
 // 1 Variant.
 // Передаємо у функцію main() нового користувача по наступному прикладу.
@@ -54,10 +58,12 @@ operationWithDailyTax.openRestaurant()
 // Функція, яка своїм викликом показує в консолі всі логи, які були здійснені до попереднього замовлення включно.
 // if (accessRights.getAuditCommand() == true) audit.showLogs()
 
-operationWithDailyTax.closeRestaurant()
+// operationWithDailyTax.closeRestaurant()
 
 // Головна функція програми. Отримуємо дані з виклику функції main() (-> 10)
 function main(name, budget, food, allergy) {
+
+    --exports.quantityOfUsers
 
     operationWithVisits.setVisit(name)
 
@@ -79,6 +85,7 @@ function main(name, budget, food, allergy) {
     // Запускаємо локальну функцію Properties().
     Properties()
 
+
     // console.log(user.getIngradients())
     // console.log(user.getPrice())
 
@@ -87,18 +94,19 @@ function main(name, budget, food, allergy) {
     // Якщо все проходить перевірку, то винонання програми продовжується, а якщо ні - виконання зупиняється.
     // var result3 = userInfo.StartInfoForUser()
     // if (result3 == false) return
+
     const resultAboutAllergy = userInfo.StartInfoForUser()
     if (!resultAboutAllergy[7]) {
         const trash = trashService.getTrash();
         const ingredient = menu[food]
         trashService.trashService(wasteLimit['waste limit'], trash, 1, ingredient)
 
-        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
-        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
-        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", {encoding: "UTF-8"}));
+        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", {encoding: "UTF-8"}));
+        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", {encoding: "UTF-8"});
         const getTrash = trashService.getTrash();
 
-        const trashCopy = { ...getTrash}
+        const trashCopy = {...getTrash}
         const warehouses = {
             ...readyMeals,
             ...warehouseIngradients
@@ -113,7 +121,6 @@ function main(name, budget, food, allergy) {
         auditAction.addToAudit(message);
 
 
-
         return false
     }
 
@@ -121,11 +128,11 @@ function main(name, budget, food, allergy) {
     const result = operationWithWarehouse.Calculate()
     if (!result[2]) {
 
-        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", { encoding: "UTF-8" }));
-        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", { encoding: "UTF-8" }));
-        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", { encoding: "UTF-8" });
+        const readyMeals = JSON.parse(fs.readFileSync("./warehouse/readyMeals.txt", {encoding: "UTF-8"}));
+        const warehouseIngradients = JSON.parse(fs.readFileSync("./warehouse/warehouseIngradients.txt", {encoding: "UTF-8"}));
+        const restaurantBudget = fs.readFileSync("./budget/restaurantBudget.txt", {encoding: "UTF-8"});
         const trash = trashService.getTrash();
-        const trashCopy = { ...trash}
+        const trashCopy = {...trash}
 
         const warehouses = {
             ...readyMeals,
@@ -152,6 +159,141 @@ function main(name, budget, food, allergy) {
 
     // Функція, яка записує локальні логи у файл. Потім обнуляє значення локальних логів.
     audit.writeLogs()
+
+
+    // console.log(exports.POOLED)
+    // console.log("@@@@@@@@@@@@@@@@")
+    // console.log(exports.quantityOfUsers)
+    // console.log(exports.POOLED)
+    // if (exports.quantityOfUsers == 0 && exports.POOLED === true){
+    //     checkInputFile()
+    // }
+}
+
+function randomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+module.exports.userWant = function userWant() {
+
+    var result = parseInt(randomNumber(0, 101))
+
+    if (result > 0 && result <= 50) {
+        console.log("no")
+        operationWithLogs.addLogs("Нічого не хоче.")
+        operationWithLogs.writeLogs()
+        return []
+    }
+    if (result > 50 && result <= 85) {
+        console.log("1")
+        var result2 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result2])
+        operationWithLogs.addLogs("Хоче: " + Object.keys(baseIngradients.baseIngradients)[result2])
+        operationWithLogs.writeLogs()
+        return [Object.keys(baseIngradients.baseIngradients)[result2]]
+    }
+    if (result > 85 && result <= 95) {
+        console.log("2")
+        var result3 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result3])
+        var result4 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result4])
+        operationWithLogs.addLogs("Хоче: " + Object.keys(baseIngradients.baseIngradients)[result3] + " + " + Object.keys(baseIngradients.baseIngradients)[result4])
+        operationWithLogs.writeLogs()
+        return [
+            Object.keys(baseIngradients.baseIngradients)[result3],
+            Object.keys(baseIngradients.baseIngradients)[result4]
+        ]
+    }
+    if (result > 95 && result <= 100) {
+        console.log("3")
+        var result5 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result5])
+        var result6 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result6])
+        var result7 = parseInt(randomNumber(-1, 16))
+        console.log(Object.keys(baseIngradients.baseIngradients)[result7])
+        operationWithLogs.addLogs("Хоче: " + Object.keys(baseIngradients.baseIngradients)[result5] + " + " +
+            Object.keys(baseIngradients.baseIngradients)[result6] + " + " + Object.keys(baseIngradients.baseIngradients)[result7])
+        operationWithLogs.writeLogs()
+        return [
+            Object.keys(baseIngradients.baseIngradients)[result5],
+            Object.keys(baseIngradients.baseIngradients)[result6],
+            Object.keys(baseIngradients.baseIngradients)[result7]
+        ]
+    }
+}
+
+module.exports.helpFLAG = false
+
+module.exports.QUANTITY = 0
+
+module.exports.helpMode = false
+
+module.exports.checkInputFile = function checkInputFile() {
+
+    exports.helpMode = true
+
+    var resultWhoNeedHelp = fs.readFileSync(__dirname + "/output/whoNeedHelp.txt")
+    var resultWhoCanHelp = fs.readFileSync(__dirname + "/output/whoCanHelp.txt")
+    // result = Object.values(JSON.parse((result)))
+
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@")
+    // console.log(JSON.parse(resultWhoNeedHelp))
+    // console.log(JSON.parse(resultWhoCanHelp))
+
+    console.log(Object.values(JSON.parse((resultWhoNeedHelp)))[0])
+    resultWhoNeedHelp = Object.values(JSON.parse((resultWhoNeedHelp)))[0]
+    console.log(Object.values(JSON.parse((resultWhoCanHelp)))[0])
+    resultWhoCanHelp = Object.values(JSON.parse((resultWhoCanHelp)))[0]
+
+    for (var i = 0; i < Object.keys(resultWhoCanHelp).length; i++) {
+        console.log(`Help from: ${Object.keys(resultWhoCanHelp)[i]} | He has: ${Object.values(resultWhoCanHelp)[i]} money`)
+
+        for (var p = 0; p < Object.keys(resultWhoNeedHelp).length; p++) {
+            console.log(`Name: ${Object.keys(resultWhoNeedHelp)[p]} | Food: ${Object.values(resultWhoNeedHelp)[p][0]} | Help: ${Object.values(resultWhoNeedHelp)[p][1]}`)
+
+            value = Object.values(resultWhoCanHelp)[i] - Object.values(resultWhoNeedHelp)[p][1] * -1
+            if (value > 0 && resultWhoNeedHelp[Object.keys(resultWhoNeedHelp)[p]][1] < 0) {
+                resultWhoCanHelp[Object.keys(resultWhoCanHelp)[i]] -= Object.values(resultWhoNeedHelp)[p][1] * -1
+                resultWhoNeedHelp[Object.keys(resultWhoNeedHelp)[p]][1] *= -1
+                operationWithLogs.addLogs(`-----------------------------------`)
+                operationWithLogs.addLogs(`Користувачу позичили: ${resultWhoNeedHelp[Object.keys(resultWhoNeedHelp)[p]][1]}`)
+                operationWithLogs.writeLogs()
+                exports._quantityOfPeople([Object.keys(resultWhoNeedHelp)[p]], [Object.values(resultWhoNeedHelp)[p][0]], false, Object.values(resultWhoNeedHelp)[p][1])
+                operationWithLogs.addLogs(`-----------------------------------`)
+                operationWithLogs.writeLogs()
+            }
+        }
+    }
+
+    console.log(resultWhoCanHelp)
+    console.log(resultWhoNeedHelp)
+
+
+    // operationWithLogs.addLogs("")
+    // operationWithLogs.writeLogs()
+
+    // for (var k = 0; k <= exports.QUANTITY; k ++){
+    //
+    //     exports.QUANTITY -= 1
+    //     exports.helpFLAG = false
+    //
+    //     var result = fs.readFileSync(__dirname + "/output/_input.txt")
+    //
+    //     // console.log(Object.keys((Object.values(JSON.parse((result)))[0]).length))
+    //
+    //     // for (){
+    //     result = Object.values(JSON.parse((result)))[0]
+    //     var array = Object.values(result)[0]
+    //     if (array.length == 2){
+    //         console.log(Object.keys(result)[k])
+    //         console.log(Object.values(result)[k][0])
+    //         console.log(Object.values(result)[k][1])
+    //
+    //         exports._quantityOfPeople([Object.keys(result)[k]], [Object.values(result)[k][0]], false, Object.values(result)[k][1])
+    //     }
+    // }
 }
 
 // Функція, яка встановлює основні знанення користувача.
@@ -179,15 +321,153 @@ function Properties() {
     user.setHaveAllergy(allergy)
 }
 
+module.exports._quantityOfPeople = function _quantityOfPeople(name, food, pooled, help) {
+    quantityOfPeople([name], [food], pooled, help)
+}
+
+module.exports.POOLED = false
+
+module.exports.quantityOfUsers = 0
+
+function checkUserFoodWhenRecommdCommand(food, name) {
+
+    // console.log(food)
+    // food = food[0].replace('[','').replace(']','')
+    // console.log(food)
+    food = food[0].split('-')
+    // console.log(food)
+
+    var recommendedFood = {}
+    var ingradientsForRecommendedFood = {}
+
+    for (var i = 0; i < Object.keys(JSON.parse(JSON.stringify(notBaseIngradients.notBaseIngradients))).length; i++) {
+        var ingradients = getIngradients.ingradients(Object.keys(JSON.parse(JSON.stringify(notBaseIngradients.notBaseIngradients)))[i])
+
+        for (var y = 0; y < ingradients.length; y++) {
+
+            for (var j = 0; j < food.length; j++) {
+
+                if (ingradients[y] == food[j]) {
+
+                    // recommendedFood.add(Object.keys(JSON.parse(JSON.stringify(notBaseIngradients.notBaseIngradients)))[i])
+                    recommendedFood[Object.keys(JSON.parse(JSON.stringify(notBaseIngradients.notBaseIngradients)))[i]] = getPrice.price(ingradients)
+                    ingradientsForRecommendedFood[Object.keys(JSON.parse(JSON.stringify(notBaseIngradients.notBaseIngradients)))[i]] = ingradients
+                    // ingradientsForRecommendedFood.push(ingradients)
+                    // priceForRecommendedFood.push(getPrice.price(ingradients))
+                }
+            }
+        }
+    }
+
+    var _recommendedFood = Object.fromEntries(
+        Object.entries(recommendedFood).sort(([, a], [, b]) => b - a)
+    )
+
+    // console.log(_recommendedFood)
+
+    var removeFoodsFromArray = new Set
+
+    for (var k = 0; k < Object.keys(_recommendedFood).length; k++) {
+        var budget = customersBudget[name];
+        var allergy = customersAllergies[name];
+        // console.log(allergy)
+
+        if (budget >= Object.values(_recommendedFood)[k]) {
+
+            // console.log(Object.keys(_recommendedFood)[k])
+            // console.log(Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]]))
+
+            for (var g = 0; g < allergy.length; g++){
+
+                for (var t = 0; t < Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]]).length ; t++) {
+                    if(Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]])[t] == allergy[g]){
+                        // console.log(Object.keys(_recommendedFood)[k])
+                        removeFoodsFromArray.add(Object.keys(_recommendedFood)[k])
+                    }
+                }
+            }
+        }
+
+        // console.log(name,budget,allergy)
+    }
+
+    // console.log(Object.keys(_recommendedFood).length)
+    // console.log(Array.from(removeFoodsFromArray).length)
+    // console.log(Object.keys(_recommendedFood))
+    // console.log(Array.from(removeFoodsFromArray))
+
+    for (var q = 0; q < Object.keys(_recommendedFood).length; q++) {
+        for (var w = 0; w < Array.from(removeFoodsFromArray).length; w++) {
+
+            if (Object.keys(_recommendedFood)[q] == Array.from(removeFoodsFromArray)[w]) {
+                // console.log(Object.keys(_recommendedFood)[q])
+                delete _recommendedFood[Array.from(removeFoodsFromArray)[w]]
+            }
+        }
+    }
+
+    // console.log(removeFoodsFromArray)
+
+    // console.log(_recommendedFood)
+    // console.log(Object.keys(_recommendedFood)[0])
+
+    operationWithLogs.addLogs("Рекомендовані страви: " + Object.keys(_recommendedFood))
+    operationWithLogs.addLogs("Готуємо " + Object.keys(_recommendedFood)[0])
+    operationWithLogs.writeLogs()
+
+    return Object.keys(_recommendedFood)[0]
+    // process.exit(-1)
+}
+
+// function sort(recommendedFood, priceForRecommendedFood) {
+//     for (let i = 0; i < priceForRecommendedFood.length - 1; i++) {
+//         let min = i;
+//         for (let j = i + 1; j < priceForRecommendedFood.length; j++) {
+//             if (priceForRecommendedFood[j] < priceForRecommendedFood[min]) {
+//                 min = j;
+//             }
+//         }
+//         let dummy = priceForRecommendedFood[i];
+//         priceForRecommendedFood[i] = priceForRecommendedFood[min];
+//         priceForRecommendedFood[min] = dummy;
+//
+//         let _dummy = recommendedFood[i]
+//         recommendedFood[i] = recommendedFood[min]
+//         recommendedFood[min] = _dummy
+//     }
+//     return [recommendedFood, priceForRecommendedFood];
+// }
+
 // Функція, яка перевіряє, скільки замовляє користувачів.
-function quantityOfPeople(name, food) {
+function quantityOfPeople(name, food, pooled, help, recommend) {
+
+    console.log(name)
+    // process.exit(-1)
+
+    if (recommend == true) {
+        food = checkUserFoodWhenRecommdCommand(food, name)
+    }
+
+    if (pooled === true) {
+        exports.POOLED = true
+    }
 
     // Якщо більше 1 користувач.
     if (name.length == 1) {
-        const budget = customersBudget[name];
+        var budget = customersBudget[name];
         const allergy = customersAllergies[name];
+
+        if (help > 0) {
+            // help += 10
+            budget += help
+            console.log("@BUDGET@: " + budget)
+        }
+
         main(name, budget, food, allergy)
     } else {
+
+        exports.quantityOfUsers = name.length
+
         const budget = name.map(e => customersBudget[e]);
         const allergy = name.map(e => customersAllergies[e]);
         if (accessRights.getTableCommand() == false) return
