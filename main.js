@@ -25,7 +25,6 @@ const wasteLimit = require('./resources/configuration.json');
 const operationWithLogs = require("./restaurantLogs/operationWithLogs");
 const {food} = require("./user/user");
 
-const x = 0
 /*
 ------------------------------------------------------------------------------------------------
 1. ГОЛОВНА ФУНКЦІЯ ПРОГРАМИ - main()
@@ -160,14 +159,6 @@ function main(name, budget, food, allergy) {
     // Функція, яка записує локальні логи у файл. Потім обнуляє значення локальних логів.
     audit.writeLogs()
 
-
-    // console.log(exports.POOLED)
-    // console.log("@@@@@@@@@@@@@@@@")
-    // console.log(exports.quantityOfUsers)
-    // console.log(exports.POOLED)
-    // if (exports.quantityOfUsers == 0 && exports.POOLED === true){
-    //     checkInputFile()
-    // }
 }
 
 function randomNumber(min, max) {
@@ -236,11 +227,6 @@ module.exports.checkInputFile = function checkInputFile() {
 
     var resultWhoNeedHelp = fs.readFileSync(__dirname + "/output/whoNeedHelp.txt")
     var resultWhoCanHelp = fs.readFileSync(__dirname + "/output/whoCanHelp.txt")
-    // result = Object.values(JSON.parse((result)))
-
-    console.log("@@@@@@@@@@@@@@@@@@@@@@@")
-    // console.log(JSON.parse(resultWhoNeedHelp))
-    // console.log(JSON.parse(resultWhoCanHelp))
 
     console.log(Object.values(JSON.parse((resultWhoNeedHelp)))[0])
     resultWhoNeedHelp = Object.values(JSON.parse((resultWhoNeedHelp)))[0]
@@ -270,30 +256,6 @@ module.exports.checkInputFile = function checkInputFile() {
     console.log(resultWhoCanHelp)
     console.log(resultWhoNeedHelp)
 
-
-    // operationWithLogs.addLogs("")
-    // operationWithLogs.writeLogs()
-
-    // for (var k = 0; k <= exports.QUANTITY; k ++){
-    //
-    //     exports.QUANTITY -= 1
-    //     exports.helpFLAG = false
-    //
-    //     var result = fs.readFileSync(__dirname + "/output/_input.txt")
-    //
-    //     // console.log(Object.keys((Object.values(JSON.parse((result)))[0]).length))
-    //
-    //     // for (){
-    //     result = Object.values(JSON.parse((result)))[0]
-    //     var array = Object.values(result)[0]
-    //     if (array.length == 2){
-    //         console.log(Object.keys(result)[k])
-    //         console.log(Object.values(result)[k][0])
-    //         console.log(Object.values(result)[k][1])
-    //
-    //         exports._quantityOfPeople([Object.keys(result)[k]], [Object.values(result)[k][0]], false, Object.values(result)[k][1])
-    //     }
-    // }
 }
 
 // Функція, яка встановлює основні знанення користувача.
@@ -331,11 +293,7 @@ module.exports.quantityOfUsers = 0
 
 function checkUserFoodWhenRecommdCommand(food, name) {
 
-    // console.log(food)
-    // food = food[0].replace('[','').replace(']','')
-    // console.log(food)
     food = food[0].split('-')
-    // console.log(food)
 
     var recommendedFood = {}
     var ingradientsForRecommendedFood = {}
@@ -363,80 +321,43 @@ function checkUserFoodWhenRecommdCommand(food, name) {
         Object.entries(recommendedFood).sort(([, a], [, b]) => b - a)
     )
 
-    // console.log(_recommendedFood)
 
     var removeFoodsFromArray = new Set
 
     for (var k = 0; k < Object.keys(_recommendedFood).length; k++) {
         var budget = customersBudget[name];
         var allergy = customersAllergies[name];
-        // console.log(allergy)
 
         if (budget >= Object.values(_recommendedFood)[k]) {
-
-            // console.log(Object.keys(_recommendedFood)[k])
-            // console.log(Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]]))
 
             for (var g = 0; g < allergy.length; g++){
 
                 for (var t = 0; t < Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]]).length ; t++) {
                     if(Object.values(ingradientsForRecommendedFood[Object.keys(_recommendedFood)[k]])[t] == allergy[g]){
-                        // console.log(Object.keys(_recommendedFood)[k])
                         removeFoodsFromArray.add(Object.keys(_recommendedFood)[k])
                     }
                 }
             }
         }
 
-        // console.log(name,budget,allergy)
     }
-
-    // console.log(Object.keys(_recommendedFood).length)
-    // console.log(Array.from(removeFoodsFromArray).length)
-    // console.log(Object.keys(_recommendedFood))
-    // console.log(Array.from(removeFoodsFromArray))
 
     for (var q = 0; q < Object.keys(_recommendedFood).length; q++) {
         for (var w = 0; w < Array.from(removeFoodsFromArray).length; w++) {
 
             if (Object.keys(_recommendedFood)[q] == Array.from(removeFoodsFromArray)[w]) {
-                // console.log(Object.keys(_recommendedFood)[q])
                 delete _recommendedFood[Array.from(removeFoodsFromArray)[w]]
             }
         }
     }
 
-    // console.log(removeFoodsFromArray)
-
-    // console.log(_recommendedFood)
-    // console.log(Object.keys(_recommendedFood)[0])
 
     operationWithLogs.addLogs("Рекомендовані страви: " + Object.keys(_recommendedFood))
     operationWithLogs.addLogs("Готуємо " + Object.keys(_recommendedFood)[0])
     operationWithLogs.writeLogs()
 
     return Object.keys(_recommendedFood)[0]
-    // process.exit(-1)
 }
-
-// function sort(recommendedFood, priceForRecommendedFood) {
-//     for (let i = 0; i < priceForRecommendedFood.length - 1; i++) {
-//         let min = i;
-//         for (let j = i + 1; j < priceForRecommendedFood.length; j++) {
-//             if (priceForRecommendedFood[j] < priceForRecommendedFood[min]) {
-//                 min = j;
-//             }
-//         }
-//         let dummy = priceForRecommendedFood[i];
-//         priceForRecommendedFood[i] = priceForRecommendedFood[min];
-//         priceForRecommendedFood[min] = dummy;
-//
-//         let _dummy = recommendedFood[i]
-//         recommendedFood[i] = recommendedFood[min]
-//         recommendedFood[min] = _dummy
-//     }
-//     return [recommendedFood, priceForRecommendedFood];
-// }
 
 // Функція, яка перевіряє, скільки замовляє користувачів.
 function quantityOfPeople(name, food, pooled, help, recommend) {
@@ -458,7 +379,6 @@ function quantityOfPeople(name, food, pooled, help, recommend) {
         const allergy = customersAllergies[name];
 
         if (help > 0) {
-            // help += 10
             budget += help
             console.log("@BUDGET@: " + budget)
         }

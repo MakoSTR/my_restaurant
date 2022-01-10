@@ -284,53 +284,7 @@ module.exports.start = function start() {
         operationWithLogs.addLogs("Бюджет після: " + user.getBudgetAfterPay())
         operationWithLogs.writeLogs()
 
-        // if (Object.keys(whoNeedHelp).length > 0) {
-        //
-        //     console.log(whoNeedHelp)
-        //     console.log(usersBudgets)
-        //
-        //     for (var j = 0; j < Object.keys(whoNeedHelp).length; j++) {
-        //
-        //         var result = usersBudgets[Object.keys(usersBudgets)[Object.keys(usersBudgets).length - 1]] - usersBudgets[Object.keys(whoNeedHelp)[j]] * -1
-        //         if (result > 0) {
-        //             usersBudgets[Object.keys(usersBudgets)[Object.keys(usersBudgets).length - 1]] = result
-        //             console.log(Object.keys(whoNeedHelp)[j], Object.values(whoNeedHelp)[j], false, usersBudgets[Object.keys(whoNeedHelp)[j]] * -1)
-        //
-        //             var name = Object.keys(whoNeedHelp)[j]
-        //             var food = Object.values(whoNeedHelp)[j]
-        //             var help = usersBudgets[Object.keys(whoNeedHelp)[j]] * -1
-        //
-        //
-        //             addUsers[name] = [food, help]
-        //
-        //             fs.writeFileSync(__dirname + "/_input.txt", JSON.stringify({
-        //                 addUsers
-        //             }))
-        //
-        //             main.QUANTITY += 1
-        //             main.helpFLAG = true
-        //
-        //             console.log(usersBudgets)
-        //             console.log(whoNeedHelp)
-        //
-        //
-        //             operationWithLogs.addLogs("---------------------------------------------")
-        //             operationWithLogs.writeLogs()
-        //
-        //             operationWithLogs.addLogs("У одного з попередніх користувачів не було коштів на замовлення.")
-        //             operationWithLogs.writeLogs()
-        //             operationWithLogs.addLogs("У користувача, який замовляє на даний момент є кошти, щоб нам позичити.")
-        //             operationWithLogs.writeLogs()
-        //             operationWithLogs.addLogs(`Забираємо у користувача ${usersBudgets[Object.keys(usersBudgets)[Object.keys(usersBudgets).length - 1]]} суму, яку нам не вистачає: ` + help)
-        //             operationWithLogs.writeLogs()
-        //
-        //             operationWithLogs.addLogs("---------------------------------------------")
-        //             operationWithLogs.writeLogs()
-        //
-        //         }
-        //     }
-        //     whoNeedHelp = {}
-        // }
+
 
         if (main.quantityOfUsers == 0){
 
@@ -365,53 +319,7 @@ module.exports.start = function start() {
         // Інформація про вихід з програми.
         // systemCommands.EXIT("У користувача є алергія, або немає коштів на замовлення.")
 
-        // if (main.POOLED === true) {
-        //     console.log("TRUE")
-        //
-        //     console.log(usersBudgets)
-        //     // console.log(whoNeedHelp)
-        //
-        //     if (exports.haveAllergy() == "Nothing" && exports.canBuy() == false) {
-        //
-        //         for (var i = 0; i < Object.keys(usersBudgets).length; i++) {
-        //
-        //             whoNeedHelp[Object.keys(usersBudgets)[i]] = user.getFood()
-        //             // console.log(whoNeedHelp)
-        //
-        //             if (Object.values(usersBudgets)[i] > 0) {
-        //
-        //                 var canHelp = Object.values(usersBudgets)[i] - Object.values(usersBudgets)[Object.values(usersBudgets).length - 1] * -1
-        //
-        //                 if (canHelp > 0) {
-        //
-        //                     console.log("CAN HELP")
-        //                     console.log(canHelp)
-        //
-        //                     user.setBudget(user.getBudget() + Object.values(usersBudgets)[Object.values(usersBudgets).length - 1] * -1)
-        //                     console.log(user.getBudget())
-        //
-        //                     operationWithLogs.addLogs("---------------------------------------------")
-        //                     operationWithLogs.writeLogs()
-        //                     operationWithLogs.addLogs("У користувача немає коштів на замовлення, але є змога позичити в друга.")
-        //                     operationWithLogs.writeLogs()
-        //                     operationWithLogs.addLogs(`Забираємо у користувача ${Object.keys(usersBudgets)[i]} суму, яку нам не вистачає: ` + Object.values(usersBudgets)[Object.values(usersBudgets).length - 1])
-        //                     operationWithLogs.addLogs("Наш бюджет після позики: " + user.getBudget())
-        //                     operationWithLogs.writeLogs()
-        //                     operationWithLogs.addLogs("---------------------------------------------")
-        //                     operationWithLogs.writeLogs()
-        //
-        //                     console.log("@")
-        //                     usersBudgets[Object.keys(usersBudgets)[i]] = usersBudgets[Object.keys(usersBudgets)[i]] - Object.values(usersBudgets)[Object.values(usersBudgets).length - 1] * -1
-        //                     console.log(usersBudgets)
-        //
-        //                     exports.budgetAfterPay()
-        //
-        //                     return true
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+
 
         if (main.quantityOfUsers == 0){
 
